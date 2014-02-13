@@ -1,10 +1,15 @@
 ﻿<Window x:Class="ReadXmlTreeViewAutofac.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:viewModel="clr-namespace:ReadXmlTreeViewAutofac.ViewModel"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <Window.Resources>
+        <viewModel:TreeViewModel x:Key="TreeViewModel" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource TreeViewModel}">
         <StackPanel >
-            <TreeView Height="161"/>
+            <TreeView Name="tv" ItemsSource="{Binding Path=TreeViewModels}" Height="161"/>
         </StackPanel>
     </Grid>
 </Window>

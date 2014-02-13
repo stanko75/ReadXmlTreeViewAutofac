@@ -1,38 +1,67 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+using Autofac;
 
 namespace ReadXmlTreeViewAutofac.ViewModel
 {
-
-  public interface IRead
+  public interface IMyTree
   {
-    List<string> Read();
+    List<string> Read(string myFile);
   }
-
-  public interface IReadXml
+  public interface IReadXMLMyTree
   {
-    void ReadXml(string XmlFile);
+    List<string> ReadXML();
   }
-
-  public class ReadXmlImpl : IReadXml
+  public class MyXmlReader : IReadXMLMyTree
   {
-    private IRead _read;
-
-    public ReadXmlImpl(IRead read)
+    private IMyTree _output;
+    public MyXmlReader(IMyTree output)
     {
-      this._read = read;
+      this._output = output;
     }
 
-    public void ReadXml(string XmlFile)
+    public List<string> ReadXML()
     {
-      this._read.Read();
+      return this._output.Read(@"somePath");
     }
   }
 
-  public class MyReadXml : IRead
+  public class DoMytree : IMyTree
   {
-    public List<string> Read()
+    public List<string> Read(string myFile)
     {
-      throw new System.NotImplementedException();
+      List<string> TreeViewModels = new List<string>();
+      //TreeViewModels.Add("test");
+      XElement linqMyElement = XElement.Load(myFile);
+      var elements =
+        from name in linqMyElement.Elements("elementCS").Elements("elementC").Elements("elementU")
+        select name;
+      foreach (var element in elements)
+      {
+        TreeViewModels.Add(element.Value);
+      }
+      return TreeViewModels;
+    }
+  }
+
+  public class TreeViewModel
+  {
+    public static List<string> ReadXML()
+    {
+      var scope = MainWindow.Container.BeginLifetimeScope();
+      var writer = scope.Resolve<IReadXMLMyTree>();
+      return writer.ReadXML();
+    }
+    public List<string> TreeViewModels { get; set; }
+    public TreeViewModel()
+    {
+      var builder = new ContainerBuilder();
+      builder.RegisterType<MyXmlReader>().As<IReadXMLMyTree>();
+      builder.RegisterType<DoMytree>().As<IMyTree>();
+      MainWindow.Container = builder.Build();
+
+      TreeViewModels = ReadXML();
     }
   }
 }
