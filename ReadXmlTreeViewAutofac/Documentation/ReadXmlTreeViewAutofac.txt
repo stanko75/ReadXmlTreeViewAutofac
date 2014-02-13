@@ -1,0 +1,26 @@
+Autofac project.
+
+Create application which will read XML and from it will fill treeview using autofac
+
+I will need to create a class which will load XML decoupled - that means it should be able to load whatever (for example list of categories from Joomla! - MySQL) and to show it in the treeView.
+
+What I know for sure is that my interface should return something like List<string>, as parameter can take file path (if it is XML), or password, username and server if it is MySQL.
+
+So, first I created "root" interface:
+
+<pre class="brush:csharp">
+public interface IRead
+{
+	List&lt;string&gt; Read();
+}
+</pre>
+
+Then interface for reading XML like:
+
+<pre class="brush:csharp">
+public interface IReadXml
+{
+	void ReadXml(string XmlFile);
+}
+</pre>
+
