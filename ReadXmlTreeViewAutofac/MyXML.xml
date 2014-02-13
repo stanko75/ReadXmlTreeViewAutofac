@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Source:  http://subversion.ise.de/svn/gira/im01/system/devicepackage/default/devicestack/opt/gira/etc/devicestack/definitions/-->
+<rootNode version="1.0">
+  <items>
+    <!-- General GDS Device Channel. This channel is part of every GDS based device. -->
+    <item>
+      <urn>www.milosev.com</urn>
+      <itemName>My personal Web Site</itemName>
+      <baseTypeUrn></baseTypeUrn>
+      <defaultReadIndex>0</defaultReadIndex>
+      <defaultWriteIndex>0</defaultWriteIndex>
+      <childItem>
+        <index>0</index>
+        <childName>Stanko</childName>
+        <mandatory>M</mandatory>
+        <read>M</read>
+        <write>-</write>
+        <event>M</event>
+      </childItem>
+      <childItem>
+        <index>1</index>
+        <childName>Milosev</childName>
+        <mandatory>M</mandatory>
+        <read>M</read>
+        <write>-</write>
+        <event>-</event>
+      </childItem>
+    </item>
+  </items>
+ </rootNode>
