@@ -1,38 +1,28 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+using Autofac;
+using ReadXmlTreeViewAutofac.Documentation;
 
 namespace ReadXmlTreeViewAutofac.ViewModel
 {
-
-  public interface IRead
+ public class TreeViewModel
   {
-    List<string> Read();
-  }
-
-  public interface IReadXml
-  {
-    void ReadXml(string XmlFile);
-  }
-
-  public class ReadXmlImpl : IReadXml
-  {
-    private IRead _read;
-
-    public ReadXmlImpl(IRead read)
+    public static List<string> ReadXML()
     {
-      this._read = read;
+      var scope = MainWindow.Container.BeginLifetimeScope();
+      var writer = scope.Resolve<IReadXMLMyTree>();
+      return writer.ReadXML();
     }
-
-    public void ReadXml(string XmlFile)
+    public List<string> TreeViewModels { get; set; }
+    public TreeViewModel()
     {
-      this._read.Read();
-    }
-  }
+      var builder = new ContainerBuilder();
+      builder.RegisterType<MyXmlReader>().As<IReadXMLMyTree>();
+      builder.RegisterType<DoMytree>().As<IMyTree>();
+      MainWindow.Container = builder.Build();
 
-  public class MyReadXml : IRead
-  {
-    public List<string> Read()
-    {
-      throw new System.NotImplementedException();
+      TreeViewModels = ReadXML();
     }
   }
 }

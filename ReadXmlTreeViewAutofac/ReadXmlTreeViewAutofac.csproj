@@ -60,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Documentation\Interfaces.cs" />
+    <Compile Include="Documentation\Library.cs" />
+    <Compile Include="Documentation\Model.cs" />
     <Compile Include="ViewModel\ReadXmlTreeViewAutofacViewModel.cs" />
     <Compile Include="View\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
