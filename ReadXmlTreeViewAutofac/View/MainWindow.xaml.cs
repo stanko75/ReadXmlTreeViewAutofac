@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Autofac;
 
 namespace ReadXmlTreeViewAutofac
 {
@@ -7,6 +8,7 @@ namespace ReadXmlTreeViewAutofac
   /// </summary>
   public partial class MainWindow : Window
   {
+    public static IContainer Container { get; set; }
     public MainWindow()
     {
       InitializeComponent();
