@@ -12,7 +12,7 @@ namespace ReadXmlTreeViewAutofac.Documentation
   }
   public interface IReadXMLMyTree
   {
-    List<string> ReadXML();
+    List<string> ReadXml();
     List<string> ReadMySql();
   }
 }

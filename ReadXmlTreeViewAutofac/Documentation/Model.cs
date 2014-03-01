@@ -8,13 +8,13 @@ namespace ReadXmlTreeViewAutofac.Documentation
 {
   public class MyXmlReader : IReadXMLMyTree
   {
-    private IMyTree _output;
+    private readonly IMyTree _output;
     public MyXmlReader(IMyTree output)
     {
       this._output = output;
     }
 
-    public List<string> ReadXML()
+    public List<string> ReadXml()
     {
       return this._output.Read(@"somePath");
     }

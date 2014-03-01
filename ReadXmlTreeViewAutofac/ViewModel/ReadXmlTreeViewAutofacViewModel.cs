@@ -12,7 +12,7 @@ namespace ReadXmlTreeViewAutofac.ViewModel
     {
       var scope = MainWindow.Container.BeginLifetimeScope();
       var writer = scope.Resolve<IReadXMLMyTree>();
-      return writer.ReadXML();
+      return writer.ReadXml();
     }
     public List<string> TreeViewModels { get; set; }
     public TreeViewModel()
