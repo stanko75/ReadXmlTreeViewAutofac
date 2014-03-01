@@ -13,21 +13,21 @@ namespace ReadXmlTreeViewAutofac.Documentation
   {
     public List<string> Read(string myFile)
     {
-      var treeViewModels = new List<string>();
+      List<string> TreeViewModels = new List<string>();
       if (File.Exists(myFile))
       {
         //TreeViewModels.Add("test");
         XElement linqMyElement = XElement.Load(myFile);
         var elements =
-          from name in linqMyElement.Elements("elementCS").Elements("elementC").Elements("elementU")
+          from name in linqMyElement.Elements("items").Elements("item").Elements("childItem").Elements("childName")
           select name;
-        treeViewModels.AddRange(elements.Select(element => element.Value));
+        TreeViewModels.AddRange(elements.Select(element => element.Value));
       }
       else
       {
         MessageBox.Show("File: " + myFile + " does not exist");
       }
-      return treeViewModels;
+      return TreeViewModels;
     }
   }
 }

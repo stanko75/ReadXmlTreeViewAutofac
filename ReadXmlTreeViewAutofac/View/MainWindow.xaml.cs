@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using Autofac;
 
-namespace ReadXmlTreeViewAutofac
+namespace ReadXmlTreeViewAutofac.View
 {
   /// <summary>
   /// Interaction logic for MainWindow.xaml

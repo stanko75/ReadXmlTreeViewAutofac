@@ -3,6 +3,7 @@ using System.Linq;
 using System.Xml.Linq;
 using Autofac;
 using ReadXmlTreeViewAutofac.Documentation;
+using ReadXmlTreeViewAutofac.View;
 
 namespace ReadXmlTreeViewAutofac.ViewModel
 {

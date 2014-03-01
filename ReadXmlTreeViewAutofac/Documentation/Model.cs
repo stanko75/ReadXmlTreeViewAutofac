@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReadXmlTreeViewAutofac.Documentation
 {
@@ -16,7 +13,7 @@ namespace ReadXmlTreeViewAutofac.Documentation
 
     public List<string> ReadXml()
     {
-      return this._output.Read(@"somePath");
+      return this._output.Read(AppDomain.CurrentDomain.BaseDirectory + @"..\..\MyXML.xml");
     }
 
     public List<string> ReadMySql()
