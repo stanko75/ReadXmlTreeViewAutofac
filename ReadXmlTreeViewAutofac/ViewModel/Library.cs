@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
+using ReadXmlTreeViewAutofac.Interfaces;
 
-namespace ReadXmlTreeViewAutofac.Documentation
+namespace ReadXmlTreeViewAutofac.ViewModel
 {
   public class DoMytree : IMyTree
   {

@@ -7,9 +7,13 @@
     <Window.Resources>
         <viewModel:TreeViewModel x:Key="TreeViewModel" />
     </Window.Resources>
-    <Grid DataContext="{StaticResource TreeViewModel}">
-        <StackPanel >
-            <TreeView Name="tv" ItemsSource="{Binding Path=TreeViewModels}" Height="161"/>
-        </StackPanel>
-    </Grid>
+    <TabControl>
+        <TabItem Header="Without Dependency Injection">
+            <Grid DataContext="{StaticResource TreeViewModel}">
+                <StackPanel >
+                    <TreeView Name="tv" ItemsSource="{Binding Path=TreeViewModels}" Height="161"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+    </TabControl>
 </Window>

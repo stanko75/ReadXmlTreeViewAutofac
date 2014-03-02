@@ -2,14 +2,15 @@
 using System.Linq;
 using System.Xml.Linq;
 using Autofac;
-using ReadXmlTreeViewAutofac.Documentation;
+using ReadXmlTreeViewAutofac.Interfaces;
+using ReadXmlTreeViewAutofac.Model;
 using ReadXmlTreeViewAutofac.View;
 
 namespace ReadXmlTreeViewAutofac.ViewModel
 {
  public class TreeViewModel
   {
-    public static List<string> ReadXML()
+    public static List<string> ReadXml()
     {
       var scope = MainWindow.Container.BeginLifetimeScope();
       var writer = scope.Resolve<IReadXMLMyTree>();
@@ -23,7 +24,7 @@ namespace ReadXmlTreeViewAutofac.ViewModel
       builder.RegisterType<DoMytree>().As<IMyTree>();
       MainWindow.Container = builder.Build();
 
-      TreeViewModels = ReadXML();
+      TreeViewModels = ReadXml();
     }
   }
 }
