@@ -60,9 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Documentation\Interfaces.cs" />
-    <Compile Include="Documentation\Library.cs" />
-    <Compile Include="Documentation\Model.cs" />
+    <Compile Include="Interfaces\Interfaces.cs" />
+    <Compile Include="ViewModel\Library.cs" />
+    <Compile Include="Model\Model.cs" />
     <Compile Include="ViewModel\ReadXmlTreeViewAutofacViewModel.cs" />
     <Compile Include="View\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -101,9 +101,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="MyXML.xml" />
   </ItemGroup>
