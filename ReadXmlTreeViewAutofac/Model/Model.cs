@@ -22,7 +22,7 @@ namespace ReadXmlTreeViewAutofac.Model
 
     public List<string> ReadXml()
     {
-      List<string> TreeViewModels = new List<string>();
+      var treeViewModels = new List<string>();
       string myFile = AppDomain.CurrentDomain.BaseDirectory + @"..\..\MyXML.xml";
 
       if (File.Exists(myFile))

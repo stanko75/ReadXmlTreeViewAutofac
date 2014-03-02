@@ -12,20 +12,7 @@ namespace ReadXmlTreeViewAutofac.ViewModel
   {
     public List<string> Read(List<string> listMyElements)
     {
-      if (listMyElements.Any())
-      {
-        return listMyElements;
-        //List<string> TreeViewModels = new List<string>();
-
-
-        //TreeViewModels.AddRange(elements.Select(element => element.Value));
-
-        //return TreeViewModels;
-      }
-      else
-      {
-        return null;
-      }
+      return listMyElements;
     }
   }
 }

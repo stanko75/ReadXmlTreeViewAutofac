@@ -16,7 +16,6 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
                 <TreeView Grid.Row="0" Grid.Column="0" Name="TvXml" ItemsSource="{Binding Path=TreeXmlViewModels}"/>
             </Grid>
@@ -28,7 +27,6 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
                 <TreeView Grid.Row="0" Grid.Column="0" Name="TvMySql" ItemsSource="{Binding Path=TreeMySqlViewModels}"/>
             </Grid>

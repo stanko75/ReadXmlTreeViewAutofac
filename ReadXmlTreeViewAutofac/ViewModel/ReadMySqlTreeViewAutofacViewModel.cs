@@ -8,7 +8,7 @@ namespace ReadXmlTreeViewAutofac.ViewModel
 {
   public class ReadMySqlTreeViewAutofacViewModel
   {
-    public static List<string> ReadXml()
+    public static List<string> ReadMySql()
     {
       var scope = MainWindow.Container.BeginLifetimeScope();
       var writer = scope.Resolve<IReadXMLMyTree>();
@@ -22,7 +22,7 @@ namespace ReadXmlTreeViewAutofac.ViewModel
       builder.RegisterType<DoMytree>().As<IMyTree>();
       MainWindow.Container = builder.Build();
 
-      TreeMySqlViewModels = ReadXml();
+      TreeMySqlViewModels = ReadMySql();
     }
   }
 }
