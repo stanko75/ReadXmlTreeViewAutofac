@@ -8,7 +8,7 @@ namespace ReadXmlTreeViewAutofac.Interfaces
   {
     List<string> Read(List<string> listMyElements);
   }
-  public interface IReadXMLMyTree
+  public interface IReadMyTree
   {
     List<string> ReadXml();
     List<string> ReadMySql();

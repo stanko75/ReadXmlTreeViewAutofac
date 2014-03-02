@@ -12,10 +12,10 @@ using ReadXmlTreeViewAutofac.Interfaces;
 
 namespace ReadXmlTreeViewAutofac.Model
 {
-  public class MyXmlReader : IReadXMLMyTree
+  public class MyReader : IReadMyTree
   {
     private readonly IMyTree _output;
-    public MyXmlReader(IMyTree output)
+    public MyReader(IMyTree output)
     {
       this._output = output;
     }

@@ -13,14 +13,14 @@ namespace ReadXmlTreeViewAutofac.ViewModel
     public static List<string> ReadXml()
     {
       var scope = MainWindow.Container.BeginLifetimeScope();
-      var writer = scope.Resolve<IReadXMLMyTree>();
+      var writer = scope.Resolve<IReadMyTree>();
       return writer.ReadXml();
     }
     public List<string> TreeXmlViewModels { get; set; }
     public TreeViewModel()
     {
       var builder = new ContainerBuilder();
-      builder.RegisterType<MyXmlReader>().As<IReadXMLMyTree>();
+      builder.RegisterType<MyReader>().As<IReadMyTree>();
       builder.RegisterType<DoMytree>().As<IMyTree>();
       MainWindow.Container = builder.Build();
 

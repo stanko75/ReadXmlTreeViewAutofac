@@ -11,14 +11,14 @@ namespace ReadXmlTreeViewAutofac.ViewModel
     public static List<string> ReadMySql()
     {
       var scope = MainWindow.Container.BeginLifetimeScope();
-      var writer = scope.Resolve<IReadXMLMyTree>();
+      var writer = scope.Resolve<IReadMyTree>();
       return writer.ReadMySql();
     }
     public List<string> TreeMySqlViewModels { get; set; }
     public ReadMySqlTreeViewAutofacViewModel()
     {
       var builder = new ContainerBuilder();
-      builder.RegisterType<MyXmlReader>().As<IReadXMLMyTree>();
+      builder.RegisterType<MyReader>().As<IReadMyTree>();
       builder.RegisterType<DoMytree>().As<IMyTree>();
       MainWindow.Container = builder.Build();
 
