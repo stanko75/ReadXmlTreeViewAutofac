@@ -9,23 +9,23 @@ namespace ReadXmlTreeViewAutofac.ViewModel
 {
   public class DoMytree : IMyTree
   {
-    public List<string> Read(string myFile)
+    public List<string> Read(XElement linqMyElement)
     {
-      List<string> TreeViewModels = new List<string>();
-      if (File.Exists(myFile))
+      if (linqMyElement != null)
       {
-        //TreeViewModels.Add("test");
-        XElement linqMyElement = XElement.Load(myFile);
+        List<string> TreeViewModels = new List<string>();
+
         var elements =
           from name in linqMyElement.Elements("items").Elements("item").Elements("childItem").Elements("childName")
           select name;
         TreeViewModels.AddRange(elements.Select(element => element.Value));
+
+        return TreeViewModels;
       }
       else
       {
-        MessageBox.Show("File: " + myFile + " does not exist");
+        return null;
       }
-      return TreeViewModels;
     }
   }
 }

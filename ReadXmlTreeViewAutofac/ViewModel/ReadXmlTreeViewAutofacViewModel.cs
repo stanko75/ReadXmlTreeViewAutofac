@@ -9,14 +9,14 @@ using ReadXmlTreeViewAutofac.View;
 namespace ReadXmlTreeViewAutofac.ViewModel
 {
  public class TreeViewModel
-  {
+ {
     public static List<string> ReadXml()
     {
       var scope = MainWindow.Container.BeginLifetimeScope();
       var writer = scope.Resolve<IReadXMLMyTree>();
       return writer.ReadXml();
     }
-    public List<string> TreeViewModels { get; set; }
+    public List<string> TreeXmlViewModels { get; set; }
     public TreeViewModel()
     {
       var builder = new ContainerBuilder();
@@ -24,7 +24,7 @@ namespace ReadXmlTreeViewAutofac.ViewModel
       builder.RegisterType<DoMytree>().As<IMyTree>();
       MainWindow.Container = builder.Build();
 
-      TreeViewModels = ReadXml();
+      TreeXmlViewModels = ReadXml();
     }
   }
 }

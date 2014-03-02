@@ -6,6 +6,7 @@
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
         <viewModel:TreeViewModel x:Key="TreeViewModel" />
+        <viewModel:ReadMySqlTreeViewAutofacViewModel x:Key="ReadMySqlTreeViewAutofacViewModel" />
     </Window.Resources>
     <TabControl>
         <TabItem Header="Read from Xml">
@@ -17,11 +18,11 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <TreeView Grid.Row="0" Grid.Column="0" Name="TvXml" ItemsSource="{Binding Path=TreeViewModels}"/>
+                <TreeView Grid.Row="0" Grid.Column="0" Name="TvXml" ItemsSource="{Binding Path=TreeXmlViewModels}"/>
             </Grid>
         </TabItem>
         <TabItem Header="Read from MySql">
-            <Grid OverridesDefaultStyle="True">
+            <Grid OverridesDefaultStyle="True" DataContext="{StaticResource ReadMySqlTreeViewAutofacViewModel}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
@@ -29,7 +30,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <TreeView Grid.Row="0" Grid.Column="0" Name="TvMySql" />
+                <TreeView Grid.Row="0" Grid.Column="0" Name="TvMySql" ItemsSource="{Binding Path=TreeMySqlViewModels}"/>
             </Grid>
         </TabItem>        
     </TabControl>
