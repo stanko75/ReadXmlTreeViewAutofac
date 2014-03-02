@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Windows;
+using System.Xml;
 using System.Xml.Linq;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using ReadXmlTreeViewAutofac.Interfaces;
 
@@ -26,7 +29,14 @@ namespace ReadXmlTreeViewAutofac.Model
       {
         //TreeViewModels.Add("test");
         XElement linqMyElement = XElement.Load(myFile);
-        return this._output.Read(linqMyElement);
+
+        var elements =
+          from name in linqMyElement.Elements("items").Elements("item").Elements("childItem").Elements("childName")
+          select name;
+
+        var pom = elements.Select(xElement => xElement.Value).ToList();
+
+        return _output.Read(pom);
       }
       else
       {
@@ -37,8 +47,8 @@ namespace ReadXmlTreeViewAutofac.Model
     public List<string> ReadMySql()
     {
       string MyConString =
-      "SERVER=server" +
-      "DATABASE=dn" +
+      "SERVER=server;" +
+      "DATABASE=db;" +
       "UID=user;" +
       "PASSWORD=pass;Convert Zero Datetime=True";
 
@@ -48,14 +58,24 @@ namespace ReadXmlTreeViewAutofac.Model
       {
         var connection = new MySqlConnection(MyConString);
         var cmdSel = new MySqlCommand(sql, connection);
-        var dt = new DataTable();
-        var da = new MySqlDataAdapter(cmdSel);
-        da.Fill(dt);
-        //dataGrid1.DataContext = dt;
+
+        connection.Open();
+
+        MySqlDataReader dataReader = cmdSel.ExecuteReader();
+
+        var pom = new List<string>();
+
+        while (dataReader.Read())
+        {
+            object bugId = dataReader["title"];
+            pom.Add(bugId.ToString());
+        }
+
+        return _output.Read(pom);
       }
-      catch
+      catch (Exception e)
       {
-        MessageBox.Show("No connection to database");
+        MessageBox.Show("Error: " + e);
       }
       return null;
     }
